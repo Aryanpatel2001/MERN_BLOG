@@ -1,7 +1,8 @@
+import jwt from "jsonwebtoken";
 import User from "../model/User.model.js";
 import bcryptjs from "bcryptjs";
 
-export const signup = async (req, res) => {
+export const signup = async (req, res, next) => {
   const { username, email, password } = req.body;
 
   if (
