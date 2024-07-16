@@ -57,3 +57,31 @@ export const signin = async (req, res, next) => {
     next(error);
   }
 };
+
+// export const forgetPassword = async (req, res, next) => {
+//   const { email } = req.body;
+
+//   // Implement your logic to handle password reset, e.g., generate a reset token and send an email
+
+//   const transporter = nodemailer.createTransport({
+//     service: "Gmail",
+//     auth: {
+//       user: "your-email@gmail.com",
+//       pass: "your-email-password",
+//     },
+//   });
+
+//   const mailOptions = {
+//     from: "your-email@gmail.com",
+//     to: email,
+//     subject: "Password Reset",
+//     text: "Click the link to reset your password: <reset-link>",
+//   };
+
+//   try {
+//     await transporter.sendMail(mailOptions);
+//     res.status(200).json({ message: "Password reset email sent" });
+//   } catch (error) {
+//     res.status(500).json({ message: "Error sending password reset email" });
+//   }
+// };

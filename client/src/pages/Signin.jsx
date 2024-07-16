@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Alert, Button, Label, Spinner, TextInput } from "flowbite-react";
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
+import OAuth from "../components/OAuth";
 import {
   signInFailure,
   signInStart,
@@ -13,6 +14,7 @@ export default function SignIn() {
   const { loading, error: errorMessage } = useSelector((state) => state.user);
   const dispatch = useDispatch();
   const navigate = useNavigate();
+
   const handleChange = (e) => {
     setFormdata({ ...formdata, [e.target.id]: e.target.value.trim() });
   };
@@ -33,13 +35,14 @@ export default function SignIn() {
         dispatch(signInFailure(data.message));
       }
       if (res.ok) {
-        dispatch.signInSuccess(data.message);
+        dispatch(signInSuccess(data.message));
         navigate("/");
       }
     } catch (error) {
       dispatch(signInFailure(error.message));
     }
   };
+
   return (
     <>
       <div className="min-h-screen mt-20 max-w-2xl mx-auto ">
@@ -51,6 +54,7 @@ export default function SignIn() {
               type="email"
               placeholder="name@gmail.com"
               id="email"
+              // onChange={(e) => setEmail(e.target.value)}
               onChange={handleChange}
             ></TextInput>
           </div>{" "}
@@ -72,6 +76,7 @@ export default function SignIn() {
               "Sign In"
             )}
           </Button>
+          <OAuth />
         </form>
         <div className=" flex gap-2 text-sm mt-5">
           <span>Don't Have an account ?</span>
@@ -79,6 +84,9 @@ export default function SignIn() {
             Sign Up
           </Link>
         </div>
+        <a href="/forget-password" className="text-gray-800">
+          Forgot password?
+        </a>
         {errorMessage && (
           <Alert className="mt-5" color="failure">
             {errorMessage}
