@@ -9,7 +9,7 @@ import Header from "./components/Header";
 import Projects from "./pages/Projects";
 import Footer from "./components/Footer";
 // import Forget from "./components/Forget";
-import Reset from "./components/reset";
+// import Reset from "./components/reset";
 
 export const RecoveryContext = createContext();
 export default function App() {
