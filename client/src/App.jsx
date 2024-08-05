@@ -8,6 +8,8 @@ import Signin from "./pages/Signin";
 import Header from "./components/Header";
 import Projects from "./pages/Projects";
 import Footer from "./components/Footer";
+import Dashboard from "./pages/Dashboard";
+import PrivateRoute from "./components/PrivateRoute";
 // import Forget from "./components/Forget";
 // import Reset from "./components/reset";
 
@@ -22,7 +24,11 @@ export default function App() {
         <Route path="/about" element={<About />}></Route>
         <Route path="/signin" element={<Signin />}></Route>
         <Route path="/signup" element={<Signup />}></Route>
+        <Route element={<PrivateRoute />}>
+          <Route path="/dashboard" element={<Dashboard />}></Route>
+        </Route>
         <Route path="/projects" element={<Projects />}></Route>
+
         {/* <Route path="/forget-password" element={<Reset />}></Route> */}
       </Routes>
       <Footer />
