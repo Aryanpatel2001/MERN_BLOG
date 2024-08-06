@@ -17,7 +17,7 @@ export default function DashSidebar() {
     }
   }, [location.search]);
   return (
-    <Sidebar className="w_full md:w-auto">
+    <Sidebar className="w-full md:w-56">
       <Sidebar.Items>
         <Sidebar.ItemGroup className="flex flex-col gap-1">
           <Link to="/dashboard?tab=profile">
