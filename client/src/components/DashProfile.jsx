@@ -162,7 +162,7 @@ export default function DashProfile() {
   };
 
   return (
-    <div className=" p-5 mx-auto max-w-lg ">
+    <div className=" p-5 mx-auto max-w-lg w-full">
       <h1 className="my-7 text-center  font-semibold text-3xl">Profile</h1>
       <form action="" className="flex flex-col gap-4" onSubmit={handleSubmit}>
         <input
