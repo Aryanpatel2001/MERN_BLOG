@@ -13,6 +13,7 @@ import PrivateRoute from "./components/PrivateRoute";
 import CreatePost from "./pages/CreatePost";
 import OnlyAdminPrivate from "./components/OnlyAdminPrivate";
 import UpdatePost from "./pages/UpdatePost";
+import PostPage from "./pages/PostPage";
 // import Forget from "./components/Forget";
 // import Reset from "./components/reset";
 
@@ -32,10 +33,11 @@ export default function App() {
         </Route>
         <Route element={<OnlyAdminPrivate />}>
           <Route path="/create" element={<CreatePost />}></Route>
-          <Route path="/update/:postId" element={<UpdatePost />}></Route>
+          <Route path="/updatepost/:postId" element={<UpdatePost />}></Route>
         </Route>
 
         <Route path="/projects" element={<Projects />}></Route>
+        <Route path="/post/:postSlug" element={<PostPage />}></Route>
 
         {/* <Route path="/forget-password" element={<Reset />}></Route> */}
       </Routes>
