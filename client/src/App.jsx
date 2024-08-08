@@ -14,6 +14,7 @@ import CreatePost from "./pages/CreatePost";
 import OnlyAdminPrivate from "./components/OnlyAdminPrivate";
 import UpdatePost from "./pages/UpdatePost";
 import PostPage from "./pages/PostPage";
+import ScrollToTop from "./components/ScrollToTop";
 // import Forget from "./components/Forget";
 // import Reset from "./components/reset";
 
@@ -21,6 +22,7 @@ export const RecoveryContext = createContext();
 export default function App() {
   return (
     <BrowserRouter>
+      <ScrollToTop />
       <Header />
 
       <Routes>
