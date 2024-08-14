@@ -1,10 +1,12 @@
 import moment from "moment";
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-
-export default function Comment({ comment }) {
+import { FaThumbsUp } from "react-icons/fa";
+// eslint-disable-next-line react/prop-types
+export default function Comment({ comment, onLike }) {
   const { currentUser } = useSelector((state) => state.user);
   const [user, setUser] = useState({});
+  console.log(user);
   useEffect(() => {
     const getUser = async () => {
       try {
@@ -19,6 +21,7 @@ export default function Comment({ comment }) {
     };
     getUser();
   }, [comment]);
+
   return (
     <div className="flex p-4 border-b dark:border-gray-500 text-sm">
       <div className="flex-shrink-0 mr-3">
@@ -36,6 +39,25 @@ export default function Comment({ comment }) {
           <span>{moment(comment.createdAt).fromNow()}</span>
         </div>
         <p className="text-gray-500 pb-2">{comment.content}</p>
+        <div className=" flex items-center pt-2 text-xs border-t dark:border-gray-700 max-w-fit gap-2">
+          <button
+            type="button"
+            onClick={() => onLike(comment._id)}
+            className={`text-gray-400 hover:text-blue-500 ${
+              currentUser &&
+              comment.likes.includes(currentUser._id) &&
+              "!text-blue-500"
+            }`}
+          >
+            <FaThumbsUp className="text-sm" />
+          </button>
+          <p className="text">
+            {comment.numberOfLikes > 0 &&
+              comment.numberOfLikes +
+                " " +
+                (comment.numberOfLikes === 1 ? "like" : "likes")}
+          </p>
+        </div>
       </div>
     </div>
   );
