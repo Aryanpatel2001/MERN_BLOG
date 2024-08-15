@@ -46,7 +46,9 @@ export default function PostPage() {
         }
       };
       fetchRecentPost();
-    } catch (error) {}
+    } catch (error) {
+      console.log(error.message);
+    }
   });
 
   if (loading)
@@ -56,31 +58,33 @@ export default function PostPage() {
       </div>
     );
   return (
-    <main className="p-3 flex flex-col max-w-6xl mx-auto min-h-screen">
-      <h1 className=" text-3xl mt-10 p-3 text-center font-serif max-w-2xl mx-auto lg:text-4xl">
+    <main className="p-3 flex flex-col max-w-6xl mx-auto min-h-screen dark:text-slate-400">
+      <h1 className=" text-3xl mt-10 p-3 text-center font-serif max-w-2xl mx-auto lg:text-4xl dark:text-blue-300">
         {post && post.title}
       </h1>
       <Link
         to={`/search?category=${post && post.category}`}
-        className="self-center mt-5"
+        className="self-center mt-5 "
       >
-        <Button color="gray" pill size="x5">
+        <Button color="gray" pill size="x5" className="p-3">
           {post && post.category}
         </Button>
       </Link>
       <img
         src={post && post.image}
         alt={post && post.title}
-        className="mt-10 p-3 max-h-[600px] w-full object-cover"
+        className="mt-10 p-3 max-h-[600px] w-full object-cover rounded-3xl"
       />
       <div className="flex justify-between p-3 border-b border-slate-500 mx-auto w-full max-w-2xl text-xs">
-        <span>{post && new Date(post.createdAt).toLocaleDateString()}</span>
+        <span className="dark:text-blue-400">
+          {post && new Date(post.createdAt).toLocaleDateString()}
+        </span>
         <span className="italic">
           {post && (post.content.length / 1000).toFixed(0)} mins read
         </span>
       </div>
       <div
-        className="p-3 max-w-2xl mx-auto w-full post-content"
+        className="p-3 max-w-2xl mx-auto w-full post-content dark:text-blue-200"
         dangerouslySetInnerHTML={{ __html: post && post.content }}
       ></div>
       <div className="max-w-4xl mx-auto w-full">
@@ -89,7 +93,7 @@ export default function PostPage() {
       <CommentSection postId={post._id} />
 
       <div className="flex flex-col justify-center items-center mb-5">
-        <h1 className="text-xl mt-5">Recent articles</h1>
+        <h1 className="text-xl mt-5 dark:text-gray-400">Recent articles</h1>
         <div className="flex flex-wrap gap-5 mt-5 justify-center">
           {recentPost &&
             recentPost.map((post) => <PostCard key={post._id} post={post} />)}

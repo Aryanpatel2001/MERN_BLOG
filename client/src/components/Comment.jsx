@@ -51,7 +51,7 @@ export default function Comment({ comment, onLike, onEdit, onDelete }) {
   };
 
   return (
-    <div className="flex p-4 border-b dark:border-gray-500 text-sm">
+    <div className="flex p-4 border-b dark:text-slate-400 text-sm">
       <div className="flex-shrink-0 mr-3">
         <img
           src={user.profilePicture}
@@ -59,7 +59,7 @@ export default function Comment({ comment, onLike, onEdit, onDelete }) {
           className="w-10 h-10 rounded-full "
         />
       </div>
-      <div className="flex-1">
+      <div className="flex-1 ">
         <div className="flex items-center mb-1">
           <span className="font-bold mr-1 text-xs truncate">
             {user ? `@${user.username}` : "anonymous user"}
@@ -89,7 +89,9 @@ export default function Comment({ comment, onLike, onEdit, onDelete }) {
           </>
         ) : (
           <>
-            <p className="text-gray-500 pb-2">{comment.content}</p>
+            <p className="text-gray-500 pb-2 dark:text-gray-400">
+              {comment.content}
+            </p>
             <div className=" flex items-center pt-2 text-xs border-t dark:border-gray-700 max-w-fit gap-2">
               <button
                 type="button"
